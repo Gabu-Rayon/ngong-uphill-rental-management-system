@@ -38,4 +38,3 @@ House Rental Management System is a simple web application developed using PHP a
 This project is intended for educational purposes only.
 
 ## Contributor(s)
-- Suleiman Ahmed(suleimanmoha120@gmail.com)
