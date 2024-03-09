@@ -16,6 +16,11 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+    ], 
+    // Add a guard for tenants
+    'tenants' => [
+        'driver' => 'database', 
+        'provider' => 'tenants',  
     ],
 
     /*
@@ -40,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        // Add a guard for tenants
+        'tenants' => [
+            'driver' => 'session',  
+            'provider' => 'tenants',  
+       ],
     ],
 
     /*
@@ -64,11 +74,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    
+        // Add a provider for tenants (if not already present)
+        'tenants' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Tenants::class, 
+        ],
     ],
 
     /*
@@ -93,6 +104,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'tenants' => [
+            'provider' => 'tenants',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

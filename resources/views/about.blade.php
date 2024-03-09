@@ -2,27 +2,25 @@
 
 @section('content')
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-          <div class="col-md-7 ftco-animate">
-          	<h2 class="subheading">Welcome to Ngong Uphill's Rentals</h2>
-          	<h1 class="mb-4">Rent an appartment for your Stay</h1>
-            <p><a href="#" class="btn btn-primary">Learn more</a> <a href="contact" class="btn btn-white">Contact us</a></p>
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>About us <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-0 bread">About Us</h1>
           </div>
         </div>
       </div>
-    </div>
-
+    </section>
    
-    <section class="ftco-section ftco-services">
+    <section class="ftco-section bg-light">
     	<div class="container">
     		<div class="row">
           <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
             <div class="d-block services-wrap text-center">
-            <div class="img" style="background-image: url('{{ asset('assets/images/services-1.jpg') }}');"></div>
-<div class="media-body py-4 px-3">
+              <div class="img" style="background-image: url('{{ asset('assets/images/services-1.jpg') }}');"></div>
+              <div class="media-body py-4 px-3">
                 <h3 class="heading">Map Direction</h3>
                 <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                 <p><a href="#" class="btn btn-primary">Read more</a></p>
@@ -31,8 +29,8 @@
           </div>
           <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
             <div class="d-block services-wrap text-center">
-             <div class="img" style="background-image: url('{{ asset('assets/images/services-2.jpg') }}');"></div>
-<div class="media-body py-4 px-3">
+              <div class="img" style="background-image: url('{{ asset('assets/images/services-2.jpg') }}');"></div>
+              <div class="media-body py-4 px-3">
                 <h3 class="heading">Accomodation Services</h3>
                 <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                 <p><a href="#" class="btn btn-primary">Read more</a></p>
@@ -41,8 +39,7 @@
           </div>
           <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
             <div class="d-block services-wrap text-center">
-         <div class="img" style="background-image: url('{{ asset('assets/images/services-3.jpg') }}');"></div>
-
+              <div class="img" style="background-image: url('{{ asset('assets/images/services-3.jpg') }}');"></div>
               <div class="media-body py-4 px-3">
                 <h3 class="heading">Great Experience</h3>
                 <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
@@ -53,95 +50,6 @@
         </div>
     	</div>
     </section>
-
-    <section class="ftco-section bg-light">
-			<div class="container-fluid px-md-0">
-				<div class="row no-gutters justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>Apartment Room</h2>
-          </div>
-        </div>
-				<div class="row no-gutters">
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex">
-    					<a href="#" class="img" style="background-image: url('{{ asset('assets/images/room-1.jpg') }}');"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 p-xl-5 text-center">
-    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-    							<!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-	    						<h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-	    						<ul class="list-accomodation">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
-	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
-	    						</ul>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex">
-    					<a href="#" class="img" style="background-image: url('{{ asset('assets/images/room-2.jpg') }}');"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 p-xl-5 text-center">
-    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-    							<!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-	    						<h3 class="mb-3"><a href="rooms.html">Standard Room</a></h3>
-									<ul class="list-accomodation">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
-	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
-	    						</ul>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex">
-    					<a href="#" class="img order-md-last" style="background-image: url('{{ asset('assets/images/room-3.jpg') }}');"></a>
-    					<div class="half right-arrow d-flex align-items-center">
-    						<div class="text p-4 p-xl-5 text-center">
-    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-    							<!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-	    						<h3 class="mb-3"><a href="rooms.html">Family Room</a></h3>
-									<ul class="list-accomodation">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
-	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
-	    						</ul>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex">
-    					<a href="#" class="img order-md-last" style="background-image: url('{{ asset('assets/images/room-3.jpg') }}');"></a>
-    					<div class="half right-arrow d-flex align-items-center">
-    						<div class="text p-4 p-xl-5 text-center">
-    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-    							<!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-	    						<h3 class="mb-3"><a href="rooms.html">Deluxe Room</a></h3>
-									<ul class="list-accomodation">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
-	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
-	    						</ul>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-			</div>
-		</section>
 
 
     <section class="ftco-section testimony-section bg-light">
@@ -184,7 +92,7 @@
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img" style="background-image: uurl('{{ asset('assets/images/person_3.jpg') }}');">
+                  <div class="user-img" style="background-image: url('{{ asset('assets/images/person_3.jpg') }}');">
                   </div>
                   <div class="text pl-4">
                   	<span class="quote d-flex align-items-center justify-content-center">
@@ -212,7 +120,7 @@
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img" style="background-image: url('{{ asset('assets/images/person_4.jpg') }}');">
+                  <div class="user-img" style="background-image: url('{{ asset('assets/images/person_1.jpg') }}');">
                   </div>
                   <div class="text pl-4">
                   	<span class="quote d-flex align-items-center justify-content-center">
@@ -326,75 +234,4 @@
 				</div>
 			</div>
 		</section>
-		
-		<section class="ftco-intro" style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}');" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-9 text-center">
-						<h2>Ready to get started</h2>
-						<p class="mb-4">It’s safe to book online with us! Get your dream stay in clicks or drop us a line with your questions.</p>
-						<p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Book now</a> <a href="#" class="btn btn-white px-4 py-3">Contact us</a></p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-    <section class="ftco-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>Latest news from our blog</h2>
-            <span class="subheading">News &amp; Blog</span>
-          </div>
-        </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_1.jpg') }}');">
-              </a>
-              <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
-                <div class="meta mb-2">
-                  <div><a href="#">January 30, 2020</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                </div>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_1.jpg') }}');">
-              </a>
-              <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
-                <div class="meta mb-2">
-                  <div><a href="#">January 30, 2020</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                </div>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_1.jpg') }}');">
-              </a>
-              <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
-                <div class="meta mb-2">
-                  <div><a href="#">January 30, 2020</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                </div>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-@endsection
+	@endsection
