@@ -141,11 +141,23 @@ class NgongUphillRentalsController extends Controller
         return view('pay-rental', compact('tenant'));
     }
     public function rentReciept()
-    {
-           $payments = Payments::all();
+    {  // Get the authenticated tenant
+        $tenant = Auth::guard('tenants')->user();
 
-        // Pass the payment data to the view
-        return view('rent-receipt', compact('payments'));
+        // Check if the tenant is authenticated
+        if (!$tenant) {
+            return redirect()->route('sign-in');
+        }
+
+        // Retrieve the latest payment for the tenant
+        $latestPayment = Payments::where('tenant_id', $tenant->id)
+            ->latest('created_at')
+            ->first();
+        // Generate a unique registration number
+        $registrationNumber = Str::uuid();
+        
+        // Pass the latest payment data to the view
+        return view('rent-receipt', compact('latestPayment','registrationNumber'));;
     }
     public function rentPayment(Request $request)
     {

@@ -36,3 +36,4 @@ Route::post('/users/rent-payment', [NgongUphillRentalsController::class, 'rentPa
 
 Route::post('/delete', [NgongUphillRentalsController::class, 'delete'])->name('delete');
 Route::post('/update', [NgongUphillRentalsController::class, 'authenticate'])->name('authenticate');
+  
