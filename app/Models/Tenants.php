@@ -52,4 +52,10 @@ class Tenants extends Authenticatable
     {
         return $this->belongsTo(Houses::class, 'house_id');
     }
+
+    // Define the relationship
+    public function maintenanceRequests()
+    {
+        return $this->hasMany(MaintenanceRequest::class);
+    }
 }

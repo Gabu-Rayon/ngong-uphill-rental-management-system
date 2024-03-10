@@ -64,8 +64,18 @@
                     <li class="nav-item"><a href="rooms" class="nav-link">Apartment Room</a></li>
                     <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
+                    @auth('tenants')
+                    <li class="nav-item"><a href="/users/logout" class="nav-link" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">Sign Out</a></li>
+                    <form id="logout-form" action="{{ route('users.logout') }}" method="POST"
+                        style="display: none;">
+                        @csrf
+                    </form>
+                @else
                     <li class="nav-item"><a href="sign-up" class="nav-link">Sign Up</a></li>
                     <li class="nav-item"><a href="sign-in" class="nav-link">Sign In</a></li>
+                @endauth
+            </ul>
                 </ul>
             </div>
         </div>
@@ -185,6 +195,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&sensor=false"></script>
     <script src="{{ asset('assets/js/google-map.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- Additional scripts -->
     <script>
         $(document).ready(function() {
@@ -193,10 +205,7 @@
     </script>
     <script>
         $(document).ready(function() {
-            // Hide all payment details initially
             $(".payment-details").hide();
-
-            // Show payment details based on selected payment method
             $("#payment_method").change(function() {
                 var selectedPaymentMethod = $(this).val();
                 $(".payment-details").hide();
@@ -204,6 +213,16 @@
             });
         });
     </script>
+
+
+<script>
+    function validateForm() {
+        if (!document.getElementById('invalidCheck').checked) {
+            alert('Please agree to the terms and conditions before adding your house.');
+            event.preventDefault();
+        }
+    }
+</script>
 </body>
 
 </html>

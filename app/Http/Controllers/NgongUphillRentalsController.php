@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Houses;
 use App\Models\Tenants;
 use App\Models\Payments;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Categories;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 class NgongUphillRentalsController extends Controller
 {
 
@@ -49,17 +52,16 @@ class NgongUphillRentalsController extends Controller
     }
     public function userProfile()
     {
-        // Get currently authenticated tenant using Laravel's Auth facade
         $tenant = Auth::guard('tenants')->user();
-
-        // If tenant is not retrieved, redirect or handle the error
         if (!$tenant) {
-            return redirect()->route('sign-in'); // Or display an error message
+            return redirect()->route('sign-in'); 
         }
 
-        // Optionally, pass the tenant data to the view
-        return view('user-profile', compact('tenant'));
+        $userHasHouse = !is_null($tenant->house_id);
+
+        return view('user-profile', compact('tenant', 'userHasHouse'));
     }
+    
     public  function create(Request $request)
     {
         // Validation rules
@@ -223,5 +225,38 @@ class NgongUphillRentalsController extends Controller
         return redirect()->route('rent-receipt')->with('success', 'Payment Succesful.Your Have Paid your Rental.');
     }
 
+    public function addHouse(){
+
+        // Get all categories
+        $categories = Categories::all();
+
+        // Eager load houses with their category
+        $houses = Houses::with('category')->get();
+
+        return view('add-house', compact('categories', 'houses'));
+            }
+
+    public function updateHouse(Request $request)
+    {
+        $request->validate([
+            'house' => 'required|exists:houses,id',
+        ]);
+
+        $tenant = auth()->guard('tenants')->user();
+        if (!$tenant) {
+            return redirect()->route('sign-in'); 
+        }
+
+        $tenant->house_id = $request->input('house');
+        $tenant->save(); 
+
+        return redirect()->route('user-profile'); 
+    }
+    public function logout()
+    {
+        Auth::guard('tenants')->logout();
+
+        return redirect('/'); 
+    }
    
 }

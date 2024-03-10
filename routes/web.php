@@ -28,10 +28,15 @@ Route::get('/sign-in', [NgongUphillRentalsController::class, 'signIn'])->name('s
 Route::get('/user-profile', [NgongUphillRentalsController::class, 'userProfile'])->name('user-profile');
 Route::get('/pay-rental', [NgongUphillRentalsController::class, 'payRental'])->name('pay-rental');
 Route::get('/rent-receipt', [NgongUphillRentalsController::class, 'rentReciept'])->name('rent-receipt');
+Route::get('/add-house', [NgongUphillRentalsController::class, 'addHouse'])->name('add-house');
+
 
 Route::post('/users/create', [NgongUphillRentalsController::class, 'create'])->name('create');
 Route::post('/users/authenticate', [NgongUphillRentalsController::class, 'authenticate'])->name('authenticate');
+Route::post('/users/logout', [NgongUphillRentalsController::class, 'logout'])->name('users.logout');
+
 Route::post('/users/rent-payment', [NgongUphillRentalsController::class, 'rentPayment'])->name('rent-payment');
+Route::post('users/update-house', [NgongUphillRentalsController::class, 'updateHouse'])->name('update-house');
 
 
 Route::post('/delete', [NgongUphillRentalsController::class, 'delete'])->name('delete');

@@ -18,7 +18,7 @@
                         <h3 class="mb-4">Pay My Rental</h3>
                         <div id="form-message-warning" class="mb-4"></div>
                         <div id="form-message-success" class="mb-4">
-                            Please Confirm you detaails before payment!
+                            Please Confirm you details before payment!
                         </div>
                         <form method="POST" id="contactForm" action="users/rent-payment" name="contactForm"
                             class="contactForm">
