@@ -75,7 +75,58 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem; }
+/* User page styling  */
 
+    #userContentContainer {
+        display: flex;
+        flex-wrap: wrap; 
+    }
+
+    #userSideBar {
+        width: 300px;
+        padding: 1px;
+        margin-left: 5px;
+    }
+
+    #userSideBar ul li a {
+        padding: 20px;
+        display: block;
+    }
+
+    #userSideBar ul li a:hover {
+        background-color: #eee;
+    }
+
+    #userSideBar ul li a:hover hr {
+        display: block;
+    }
+
+    #userSideBar ul li a hr {
+        margin: 5px 0;
+        border-top: 1px solid #ccc;
+        display: none;
+    }
+
+    #mainContent {
+        flex: 1;
+        padding: 20px;
+    }
+
+    /* Responsive styling */
+    @media (max-width: 767px) {
+        #userContentContainer {
+            flex-direction: column;
+        }
+
+        #userSideBar {
+            width: 100%;
+            margin-left: 0; 
+        }
+    }
+
+
+
+    
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;

@@ -47,4 +47,9 @@ class Tenants extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function house()
+    {
+        return $this->belongsTo(Houses::class, 'house_id');
+    }
 }

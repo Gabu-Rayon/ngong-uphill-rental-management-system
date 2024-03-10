@@ -1,103 +1,162 @@
 @extends('layout.app')
 
 @section('content')
-    <!-- END nav -->
-    <section class="ftco-section bg-light">
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-md-12">
-                    <div class="wrapper">
-                        <div class="row no-gutters">
-                            <h3>Let's get in touch</h3>
-                            <p class="mb-4">We're open for any suggestion or just to have a chat</p>
-                            <div class="dbox w-100 d-flex align-items-start">
-                                <div class="icon d-flex align-items-center justify-content-center">
-                                    <span class="fa fa-map-marker"></span>
-                                </div>
-                                <div class="text pl-3">
-                                    <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="dbox w-100 d-flex align-items-center">
-                                <div class="icon d-flex align-items-center justify-content-center">
-                                    <span class="fa fa-phone"></span>
-                                </div>
-                                <div class="text pl-3">
-                                    <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
-                                </div>
-                            </div>
-                            <div class="dbox w-100 d-flex align-items-center">
-                                <div class="icon d-flex align-items-center justify-content-center">
-                                    <span class="fa fa-paper-plane"></span>
-                                </div>
-                                <div class="text pl-3">
-                                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-                                </div>
-                            </div>
-                            <div class="dbox w-100 d-flex align-items-center">
-                                <div class="icon d-flex align-items-center justify-content-center">
-                                    <span class="fa fa-globe"></span>
-                                </div>
-                                <div class="text pl-3">
-                                    <p><span>Website</span> <a href="#">yoursite.com</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
-                        <div class="contact-wrap w-100 p-md-5 p-4">
-                            <h3 class="mb-4">Get in touch</h3>
-                            <div id="form-message-warning" class="mb-4"></div>
-                            <div id="form-message-success" class="mb-4">
-                                Your message was sent, thank you!
-                            </div>
-                            <form method="POST" id="contactForm" name="contactForm" class="contactForm">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="label" for="name">Full Name</label>
-                                            <input type="text" class="form-control" name="name" id="name"
-                                                placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="label" for="email">Email Address</label>
-                                            <input type="email" class="form-control" name="email" id="email"
-                                                placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="label" for="subject">Subject</label>
-                                            <input type="text" class="form-control" name="subject" id="subject"
-                                                placeholder="Subject">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="label" for="#">Message</label>
-                                            <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="submit" value="Send Message" class="btn btn-primary">
-                                            <div class="submitting"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
 
-
-
-                </div>
+<div id="userContentContainer">
+    <nav id="userSideBar">
+        <div class="image">
+            <div class="text-center mt-3">
+                <img src="https://via.placeholder.com/100" alt="User Profile Image"
+                    class="rounded-circle user-profile-image" width="150">
+                <a href="#" class="update-profile-icon" data-toggle="tooltip" data-placement="bottom"
+                    title="Update Profile Image">
+                    <span class="fa fa-plus-circle text-dark"></span>
+                </a>
             </div>
         </div>
+        <div class="userSideBar-header">
+            <h3>userSideBar</h3>
         </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Page</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <hr>
+            <li>
+                <a href="pay-rental">Pay Rental</a>
+            </li>
+            <hr>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="mainContent">
+         <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_1.jpg') }}');">
+              </a>
+              <div class="text p-4 text-center">
+                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <div class="meta mb-2">
+                  <div><a href="#">January 30, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_1.jpg') }}');">
+              </a>
+              <div class="text p-4 text-center">
+                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <div class="meta mb-2">
+                  <div><a href="#">January 30, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_3.jpg') }}');">
+              </a>
+              <div class="text p-4 text-center">
+                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <div class="meta mb-2">
+                  <div><a href="#">January 30, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_4.jpg') }}');">
+              </a>
+              <div class="text p-4 text-center">
+                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <div class="meta mb-2">
+                  <div><a href="#">January 30, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_5.jpg') }}');">
+              </a>
+              <div class="text p-4 text-center">
+                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <div class="meta mb-2">
+                  <div><a href="#">January 30, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_6.jpg') }}');">
+              </a>
+              <div class="text p-4 text-center">
+                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <div class="meta mb-2">
+                  <div><a href="#">January 30, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+    </div>
+</div>
 @endsection
