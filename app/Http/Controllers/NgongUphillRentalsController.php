@@ -109,7 +109,7 @@ class NgongUphillRentalsController extends Controller
 
         if (Auth::guard('tenants')->attempt($credentials)) {
             // Successful login, redirect to user profile
-            return redirect()->intended('user-profile');  // Replace with actual route name or URL
+            return redirect()->intended('user-profile');
         }
 
         // Login failed, return error message

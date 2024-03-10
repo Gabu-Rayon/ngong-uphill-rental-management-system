@@ -61,25 +61,6 @@
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="rooms" class="nav-link">Apartment Room</a></li>
-                    <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
-                    @auth('tenants')
-                        <li class="nav-item"><a href="/users/logout" class="nav-link"
-                                onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">Sign
-                                Out</a></li>
-                        <form id="logout-form" action="{{ route('users.logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    @else
-                        <li class="nav-item"><a href="sign-up" class="nav-link">Sign Up</a></li>
-                        <li class="nav-item"><a href="sign-in" class="nav-link">Sign In</a></li>
-                    @endauth
-
 
                     @auth('web')
                         <!-- Show Admin Logout when admin is logged in -->
@@ -108,8 +89,7 @@
                     <h2 class="footer-heading"><a href="#" class="logo">Ngong Rentals </a></h2>
                     <p>We are most trusted in real Estate,exomplary tenants services offered,well maintained estates and
                         Storey rentals and more.Want to learn more and join us in your stay.</p>
-                    <a href="about">Read more <span class="fa fa-chevron-right"
-                            style="font-size: 11px;"></span></a>
+                    <a href="about">Read more <span class="fa fa-chevron-right" style="font-size: 11px;"></span></a>
                 </div>
                 <div class="col-md-6 col-lg-3 mb-md-0 mb-4">
                     <h2 class="footer-heading">Services</h2>

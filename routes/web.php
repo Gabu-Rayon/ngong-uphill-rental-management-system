@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NgongUphillRentalsController;
+
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use App\Http\Controllers\NgongUphillRentalsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 
 Route::get('/', [NgongUphillRentalsController::class, 'index'])->name('index');
@@ -35,10 +37,30 @@ Route::post('/users/create', [NgongUphillRentalsController::class, 'create'])->n
 Route::post('/users/authenticate', [NgongUphillRentalsController::class, 'authenticate'])->name('authenticate');
 Route::post('/users/logout', [NgongUphillRentalsController::class, 'logout'])->name('users.logout');
 
-Route::post('/users/rent-payment', [NgongUphillRentalsController::class, 'rentPayment'])->name('rent-payment');
+
+
+// Admin routes 
+Route::get('/admin/admin-login', [AdminController::class, 'adminLogin'])->name('admin-login');
+Route::post('/admin/admin-login-submit', [AdminController::class, 'adminLoginSubmit'])->name('admin-login-submit');
+Route::any('/admin/admin-logout', [AdminController::class, 'adminLogout'])->name('admin-logout');
+Route::get('/admin/index', [AdminController::class, 'adminIndex'])->name('index');
+
+Route::post('/users/rent-payment', [AdminController::class, 'rentPayment'])->name('rent-payment');
 Route::post('users/update-house', [NgongUphillRentalsController::class, 'updateHouse'])->name('update-house');
 
 
-Route::post('/delete', [NgongUphillRentalsController::class, 'delete'])->name('delete');
-Route::post('/update', [NgongUphillRentalsController::class, 'authenticate'])->name('authenticate');
-  
+Route::get('/tenant/edit', [AdminController::class, 'editTenant'])->name('tenant.edit');
+Route::post('/tenant/update', [AdminController::class, 'udateTenant'])->name('tenant.update');
+Route::post('/tenant/delete', [AdminController::class, 'deleteTenant'])->name('tenant.delete');
+
+Route::get('/payment/edit', [AdminController::class, 'editPayment'])->name('payment.edit');
+Route::post('/payment/delete', [AdminController::class, 'deletePayment'])->name('payment.delete');
+Route::post('/payment/update', [AdminController::class, 'updatePayment'])->name('payment.update');
+
+Route::get('/house/edit', [AdminController::class, 'editHouse'])->name('house.edit');
+Route::post('/house/delete', [AdminController::class, 'deleteHouse'])->name('house.delete');
+Route::post('/house/update', [AdminController::class, 'updateHouse'])->name('house.update');
+
+Route::get('/category/edit', [AdminController::class, 'editCategory'])->name('category.edit');
+Route::post('/category/delete', [AdminController::class, 'deleteCategory'])->name('category.delete');
+Route::post('/category/update', [AdminController::class, 'updateCategory'])->name('category.update');
