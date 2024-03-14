@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('maintenance_requests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('maintenance_ticket_id')->constrained();
-            $table->foreignId('tenant_id')->constrained();
+            $table->foreignId('tenant_id')->constrained()->onDelete('cascade');
+            $table->string('subject');
             $table->text('request');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

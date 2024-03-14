@@ -2,6 +2,13 @@
 
 @section('content')
     <div id="userContentContainer">
+
+        @if (session('request_alert'))
+            <script>
+                alert("{{ session('request_alert') }}");
+            </script>
+        @endif
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Check if the user has added a house
@@ -65,47 +72,109 @@
                 </li>
                 <hr>
                 <li>
-                    <a href="#">Ask For Maintaince</a>
+                    <a href="maintainance-request">Ask For Maintenance</a>
                 </li>
             </ul>
         </nav>
-
         <div id="mainContent">
             <section class="ftco-section bg-light">
                 <div class="container">
-                    <div class="row d-flex">
-                        <div class="col-md-4 d-flex ftco-animate">
-                            <div class="blog-entry align-self-stretch">
-                                <div class="text p-4 text-center">
-                                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                     Quisquam ea nihil a quaerat. Voluptas ducimus ut dolore explicabo reiciendis 
-                                    dolorem hic iste pariatur optio, eius quod repellat, illum corrupti itaque.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex ftco-animate">
-                            <div class="blog-entry align-self-stretch">
-                                <div class="text p-4 text-center">
-                                    @if ($userHasHouse)
-                                        <p>House Category: {{ $tenant->house->category->name }}</p>
-                                        <p>House No: {{ $tenant->house->house_no }}</p>
-                                        <p>Price: {{ $tenant->house->price }}</p>
-                                        <!-- Add more details as needed -->
+                    <div class="col-md-12">
+                        <div class="wrapper">
+                            <div class="row no-gutters">
+                                <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
+                                    <h4>Payments</h4>
+                                    <br>
+                                    @if ($tenant->payments->isNotEmpty())
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Amount</th>
+                                                        <th>House No.</th>
+                                                        <th>Category</th>
+                                                        <th>Payment Method</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($tenant->payments as $payment)
+                                                        <tr>
+                                                            <td>{{ $payment->created_at->format('Y-m-d') }}</td>
+                                                            <td>{{ $payment->amount }}</td>
+                                                            <td>{{ $payment->house_no }}</td>
+                                                            <td>{{ $payment->category }}</td>
+                                                            <td>{{ $payment->payment_method }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     @else
-                                        <p>No house information available. Please add your house.</p>
+                                        <p>No payment yet.</p>
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-4 d-flex ftco-animate">
-                                <div class="blog-entry align-self-stretch">
-                                    <div class="text p-4 text-center">
-                                        <p>Show user All Maintaince Request</p>
+                            <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
+                                <h4>House Information</h4>
+                                @if ($userHasHouse)
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Category</th>
+                                                    <td>{{ $tenant->house->category->name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>House No</th>
+                                                    <td>{{ $tenant->house->house_no }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Price</th>
+                                                    <td>{{ $tenant->house->price }}</td>
+                                                </tr>
+                                                <!-- Add more details as needed -->
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
+                                @else
+                                    <p>No house information available. Please add your house.</p>
+                                @endif
                             </div>
                         </div>
+                        <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
+                            <h4>Maintenance Requests</h4>
+                            @if ($tenant->maintenanceRequests->isNotEmpty())
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Subject</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($tenant->maintenanceRequests as $maintenanceRequest)
+                                                <tr>
+                                                    <td>{{ $maintenanceRequest->subject }}</td>
+                                                    <td>
+                                                        @if ($maintenanceRequest->status == 0)
+                                                            Pending
+                                                        @else
+                                                            Approved
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @else
+                                <p>No maintenance requests available.</p>
+                            @endif
+                        </div>
                     </div>
+                </div>
             </section>
         </div>
-    </div>
-@endsection
+    @endsection

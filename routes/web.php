@@ -31,11 +31,15 @@ Route::get('/user-profile', [NgongUphillRentalsController::class, 'userProfile']
 Route::get('/pay-rental', [NgongUphillRentalsController::class, 'payRental'])->name('pay-rental');
 Route::get('/rent-receipt', [NgongUphillRentalsController::class, 'rentReciept'])->name('rent-receipt');
 Route::get('/add-house', [NgongUphillRentalsController::class, 'addHouse'])->name('add-house');
+Route::get('/maintainance-request', [NgongUphillRentalsController::class, 'maintainanceRequest'])->name('maintainance-request');
 
 
 Route::post('/users/create', [NgongUphillRentalsController::class, 'create'])->name('create');
 Route::post('/users/authenticate', [NgongUphillRentalsController::class, 'authenticate'])->name('authenticate');
 Route::post('/users/logout', [NgongUphillRentalsController::class, 'logout'])->name('users.logout');
+Route::post('/users/rent-payment', [NgongUphillRentalsController::class, 'rentPayment'])->name('rent-payment');
+Route::post('users/update-house', [NgongUphillRentalsController::class, 'updateHouse'])->name('update-house');
+Route::post('/users/request-maintainance', [NgongUphillRentalsController::class, 'requestMaintainance'])->name('request-maintainance');
 
 
 
@@ -44,9 +48,6 @@ Route::get('/admin/admin-login', [AdminController::class, 'adminLogin'])->name('
 Route::post('/admin/admin-login-submit', [AdminController::class, 'adminLoginSubmit'])->name('admin-login-submit');
 Route::any('/admin/admin-logout', [AdminController::class, 'adminLogout'])->name('admin-logout');
 Route::get('/admin/index', [AdminController::class, 'adminIndex'])->name('index');
-
-Route::post('/users/rent-payment', [AdminController::class, 'rentPayment'])->name('rent-payment');
-Route::post('users/update-house', [NgongUphillRentalsController::class, 'updateHouse'])->name('update-house');
 
 
 Route::get('/tenant/edit', [AdminController::class, 'editTenant'])->name('tenant.edit');
@@ -64,3 +65,6 @@ Route::post('/house/update', [AdminController::class, 'updateHouse'])->name('hou
 Route::get('/category/edit', [AdminController::class, 'editCategory'])->name('category.edit');
 Route::post('/category/delete', [AdminController::class, 'deleteCategory'])->name('category.delete');
 Route::post('/category/update', [AdminController::class, 'updateCategory'])->name('category.update');
+
+Route::post('/maintainance/toggle-status/{id}', [AdminController::class, 'toggleStatus'])->name('admin.maintainance.toggleStatus');
+Route::match(['get', 'post'], '/maintainance/delete/{id}', [AdminController::class, 'maintainanceDelete'])->name('maintainance.delete');

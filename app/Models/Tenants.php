@@ -56,6 +56,12 @@ class Tenants extends Authenticatable
     // Define the relationship
     public function maintenanceRequests()
     {
-        return $this->hasMany(MaintenanceRequest::class);
+        return $this->hasMany(MaintenanceRequest::class, 'tenant_id');
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payments::class,'tenant_id');
+    }
+
 }

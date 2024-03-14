@@ -7,6 +7,7 @@ use App\Models\Houses;
 use App\Models\Tenants;
 use App\Models\Payments;
 use App\Models\Categories;
+use App\Models\MaintenanceRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -20,14 +21,16 @@ class AdminController extends Controller
         $houseCount = Houses::count();
         $tenantCount = Tenants::count();
         $paymentCount = Payments::count();
+        $maintainanceCount = MaintenanceRequest::count();
 
         // Fetch data for tables
-        $houses = Houses::all(); // Example, you can modify this based on your needs
-        $tenants = Tenants::all(); // Example
+        $houses = Houses::all(); 
+        $tenants = Tenants::all(); 
         $categories = Categories::all();
         $payments = Payments::all();
+        $maintainances = MaintenanceRequest::all();
 
-        return view("admin-panel.index", compact('user', 'categoryCount', 'houseCount', 'tenantCount', 'paymentCount', 'houses', 'tenants','categories','payments'));
+        return view("admin-panel.index", compact('user', 'categoryCount', 'houseCount', 'tenantCount', 'paymentCount', 'houses', 'tenants','categories','payments', 'maintainances', 'maintainanceCount'));
     }
     public function adminLogin()
     {
@@ -52,6 +55,35 @@ class AdminController extends Controller
             'username' => 'These credentials do not match our records.',
         ]);
 
+    }
+      
+    //method to change the maintainance to approved
+    public function toggleStatus(Request $request, $id)
+    {
+        // Find the maintenance request by its ID
+        $maintainance = MaintenanceRequest::findOrFail($id);
+
+        // Toggle the status
+        $maintainance->status = !$maintainance->status;
+
+        // Save the changes
+        $maintainance->save();
+
+        // Redirect back or return a response
+        return redirect()->back()->with('success', 'Status updated successfully.');
+    }
+
+    //method to change the maintainance to  deletion
+    public function maintainanceDelete($id)
+    {
+        // Find the maintenance request by its ID
+        $maintainance = MaintenanceRequest::findOrFail($id);
+
+        // Delete the maintenance request
+        $maintainance->delete();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Maintenance request deleted successfully.');
     }
 
     public function adminLogout()

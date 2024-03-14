@@ -9,6 +9,7 @@ use App\Models\Categories;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Models\MaintenanceRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,6 +51,34 @@ class NgongUphillRentalsController extends Controller
     {
         return view('sign-in');
     }
+    public function maintainanceRequest(){
+        return view('maintainance-request');
+    }
+    public function requestMaintainance(Request $request)
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'request_subject' => 'required|string|max:255',
+        'maintainance_message' => 'required|string',
+    ]);
+
+        // Get the authenticated tenants
+        $tenant = auth()->guard('tenants')->user();
+
+    // Create a new MaintenanceRequest instance
+    $maintenanceRequest = new MaintenanceRequest([
+        'tenant_id' =>$tenant->id, 
+        'subject' => $validatedData['request_subject'],
+        'request' => $validatedData['maintainance_message'],
+        'status' => false,
+    ]);
+
+    // Save the maintenance request
+    $maintenanceRequest->save();
+
+    // Redirect back with success message
+    return redirect()->route('user-profile')->with('request_alert', 'Maintenance request submitted successfully.');
+}
     public function userProfile()
     {
         $tenant = Auth::guard('tenants')->user();

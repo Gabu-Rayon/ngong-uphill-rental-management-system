@@ -51,7 +51,7 @@
                                                 <div class="form-group">
                                                     <label class="label" for="email">Username</label>
                                                     <input type="text" class="form-control" name="username"
-                                                        id="username" placeholder="Username" value="{{old('usename')}}">
+                                                        id="username" placeholder="Username" value="{{old('username')}}">
                                                     @error('username')
                                                         <p class="text-danger  mt-1">{{ $message }}</p>
                                                     @enderror

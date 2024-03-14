@@ -83,6 +83,12 @@
                                                 <p>{{ $paymentCount }}</p>
                                             </div>
                                         </div>
+                                        <div class="col-md-4 d-flex ftco-animate">
+                                            <div class="blog-entry align-self-stretch">
+                                                <h6>Number of Maintainance Request</h6>
+                                                <p>{{ $maintainanceCount }}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
@@ -134,7 +140,7 @@
                                                 <tr>
                                                     <td>{{ $category->id }}</td>
                                                     <td>{{ $category->name }}</td>
-                                                     <td>
+                                                    <td>
                                                         <a href="{{ route('category.edit', $category->id) }}"
                                                             class="btn btn-primary">Edit</a>
                                                         <br>
@@ -205,6 +211,49 @@
                                                             class="btn btn-primary">Edit</a>
                                                         <br>
                                                         <a href="{{ route('payment.delete', $payment->id) }}"
+                                                            class="btn btn-danger">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
+                                    <h4>Maintainance Requests</h4>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Tenant Name</th>
+                                                <th>House No</th>
+                                                <th>Subject</th>
+                                                <th>Request</th>
+                                                <th>Status</th>
+                                                <span></span>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($maintainances as $maintainance)
+                                                <tr>
+                                                    <td>{{ $maintainance->id }}</td>
+                                                    <td>{{ $maintainance->tenant->name }}</td>
+                                                    <td>{{ $maintainance->tenant->house_no }}</td>
+                                                    <td>{{ $maintainance->subject }}</td>
+                                                    <td>{{ $maintainance->request }}</td>
+                                                    <td>
+                                                    <td>
+    @if ($maintainance->status == 1)
+        <button class="btn btn-success"
+            onclick="toggleStatus({{ $maintainance->id }}, 0, this)">Approved</button>
+    @else
+        <button class="btn btn-secondary"
+            onclick="toggleStatus({{ $maintainance->id }}, 1, this)">Pending</button>
+    @endif
+</td>
+
+                                                    <td>
+                                                        <a href="{{ route('maintainance.delete', $maintainance->id) }}"
                                                             class="btn btn-danger">Delete</a>
                                                     </td>
                                                 </tr>

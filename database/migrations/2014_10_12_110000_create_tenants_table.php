@@ -22,7 +22,7 @@ class CreateTenantsTable extends Migration
             $table->string('contact', 100);
             $table->string('town', 100);
             $table->string('password', 255);
-            $table->unsignedBigInteger('house_id')->nullable();
+            $table->unsignedBigInteger('house_id')->onDelete('cascade')->nullable();
             $table->tinyInteger('status')->default(1)->comment('1 = active, 0 = inactive');
             $table->date('date_in')->nullable();
             $table->timestamps();

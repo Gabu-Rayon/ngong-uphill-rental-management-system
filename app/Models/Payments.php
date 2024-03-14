@@ -18,4 +18,10 @@ class Payments extends Model
         'bank_account_code', 'card_holder_name', 'expiry_date',
          'cvv', 'visa_last_three_digits', 'invoice',
     ];
+
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenants::class,'tenant_id');
+    }
 }

@@ -196,8 +196,8 @@
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
-    </script>
-    <script>
+
+        /************************************************************************************/
         $(document).ready(function() {
             $(".payment-details").hide();
             $("#payment_method").change(function() {
@@ -206,15 +206,38 @@
                 $("#" + selectedPaymentMethod + "_details").show();
             });
         });
-    </script>
-
-
-    <script>
+        /************************************************************************************/
         function validateForm() {
             if (!document.getElementById('invalidCheck').checked) {
                 alert('Please agree to the terms and conditions before adding your house.');
                 event.preventDefault();
             }
+        }
+
+        /************************************************************************************/
+        //function to change maitainance status
+        function toggleStatus(id, status, button) {
+            // Send an AJAX request to toggle the status
+            $.ajax({
+                url: '/maintainance/toggle-status/' + id,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    status: status
+                },
+                success: function(response) {
+                    // Update the button text and class based on the new status
+                    if (status == 1) {
+                        $(button).removeClass('btn-secondary').addClass('btn-success').text('Approved');
+                    } else {
+                        $(button).removeClass('btn-success').addClass('btn-secondary').text('Pending');
+                    }
+                },
+                error: function(xhr) {
+                    // Handle errors
+                    console.error(xhr.responseText);
+                }
+            });
         }
     </script>
 </body>
