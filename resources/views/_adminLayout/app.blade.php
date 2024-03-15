@@ -29,8 +29,8 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col d-flex align-items-center">
-                    <p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+00 1234 567</a> or
-                        <span class="mailus">email us:</span> <a href="#">emailsample@email.com</a>
+                    <p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+254 7123 99340</a> or
+                        <span class="mailus">email us:</span> <a href="#">info@ngonguphillsrental.co.ke</a>
                     </p>
                 </div>
                 <div class="col d-flex justify-content-end">
@@ -54,7 +54,7 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="/">Vacation<span>Rental</span></a>
+            <a class="navbar-brand" href="/">NGONG UPHILL'S<span>Rental</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="fa fa-bars"></span> Menu
@@ -86,9 +86,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3 mb-md-0 mb-4">
-                    <h2 class="footer-heading"><a href="#" class="logo">Ngong Rentals </a></h2>
-                    <p>We are most trusted in real Estate,exomplary tenants services offered,well maintained estates and
-                        Storey rentals and more.Want to learn more and join us in your stay.</p>
+                    <h2 class="footer-heading"><a href="#" class="logo">Ngong Uphill's Rentals </a></h2>
+                    <p>We are the most trusted name in real estate. We offer exceptional tenant services, well-maintained estates, and a variety of rentals, including single-story homes. Learn more and find your perfect rental today!</p>
                     <a href="about">Read more <span class="fa fa-chevron-right" style="font-size: 11px;"></span></a>
                 </div>
                 <div class="col-md-6 col-lg-3 mb-md-0 mb-4">

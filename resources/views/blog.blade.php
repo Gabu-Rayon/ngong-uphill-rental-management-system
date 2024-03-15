@@ -23,7 +23,7 @@
               <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_1.jpg') }}');">
               </a>
               <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <h3 class="heading"><a href="#">Get a Rental to rise  and grow your Family</a></h3>
                 <div class="meta mb-2">
                   <div><a href="#">January 30, 2020</a></div>
                   <div><a href="#">Admin</a></div>
@@ -38,7 +38,7 @@
               <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_2.jpg') }}');">
               </a>
               <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <h3 class="heading"><a href="#">Get a Rental to rise  and grow your Family</a></h3>
                 <div class="meta mb-2">
                   <div><a href="#">January 30, 2020</a></div>
                   <div><a href="#">Admin</a></div>
@@ -53,7 +53,7 @@
               <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_3.jpg') }}');">
               </a>
               <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <h3 class="heading"><a href="#">Get a Rental to rise  and grow your Family</a></h3>
                 <div class="meta mb-2">
                   <div><a href="#">January 30, 2020</a></div>
                   <div><a href="#">Admin</a></div>
@@ -69,7 +69,7 @@
               <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_4.jpg') }}');">
               </a>
               <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <h3 class="heading"><a href="#">Get a Rental to rise  and grow your Family</a></h3>
                 <div class="meta mb-2">
                   <div><a href="#">January 30, 2020</a></div>
                   <div><a href="#">Admin</a></div>
@@ -84,7 +84,7 @@
               <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_5.jpg') }}');">
               </a>
               <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <h3 class="heading"><a href="#">Get a Rental to rise  and grow your Family</a></h3>
                 <div class="meta mb-2">
                   <div><a href="#">January 30, 2020</a></div>
                   <div><a href="#">Admin</a></div>
@@ -99,7 +99,7 @@
               <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{ asset('assets/images/image_6.jpg') }}');">
               </a>
               <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
+                <h3 class="heading"><a href="#">Get a Rental to rise  and grow your Family</a></h3>
                 <div class="meta mb-2">
                   <div><a href="#">January 30, 2020</a></div>
                   <div><a href="#">Admin</a></div>

@@ -130,8 +130,8 @@
                                                     <td>{{ $tenant->house->house_no }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Price</th>
-                                                    <td>{{ $tenant->house->price }}</td>
+                                                    <th>Letting Price ./Monthly</th>
+                                                    <td>Ksh.{{ $tenant->house->price }}</td>
                                                 </tr>
                                                 <!-- Add more details as needed -->
                                             </tbody>
