@@ -91,10 +91,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
-                                    <h4>HOUSES</h4>
+                                   
+                                    <h4>HOUSES</h4> 
+                                     <div class="col-md-4"><a href="{{ route('add.house') }}" class="btn btn-success">Add House</a></div>                                    
                                     <br>
-                                    <table class="table">
+                                    <table class="table">                                       
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -114,10 +117,10 @@
                                                     <td>{{ $house->description }}</td>
                                                     <td>{{ $house->price }}</td>
                                                     <td>
-                                                        <a href="{{ route('house.edit', $house->id) }}"
+                                                        <a href="{{ route('edit.house', $house->id) }}"
                                                             class="btn btn-primary">Edit</a>
                                                         <br>
-                                                        <a href="{{ route('house.delete', $house->id) }}"
+                                                        <a href="{{ route('delete.house', $house->id) }}"
                                                             class="btn btn-danger">Delete</a>
                                                     </td>
                                                 </tr>
@@ -243,14 +246,14 @@
                                                     <td>{{ $maintainance->request }}</td>
                                                     <td>
                                                     <td>
-    @if ($maintainance->status == 1)
-        <button class="btn btn-success"
-            onclick="toggleStatus({{ $maintainance->id }}, 0, this)">Approved</button>
-    @else
-        <button class="btn btn-secondary"
-            onclick="toggleStatus({{ $maintainance->id }}, 1, this)">Pending</button>
-    @endif
-</td>
+                                                        @if ($maintainance->status == 1)
+                                                            <button class="btn btn-success"
+                                                                onclick="toggleStatus({{ $maintainance->id }}, 0, this)">Approved</button>
+                                                        @else
+                                                            <button class="btn btn-secondary"
+                                                                onclick="toggleStatus({{ $maintainance->id }}, 1, this)">Pending</button>
+                                                        @endif
+                                                    </td>
 
                                                     <td>
                                                         <a href="{{ route('maintainance.delete', $maintainance->id) }}"

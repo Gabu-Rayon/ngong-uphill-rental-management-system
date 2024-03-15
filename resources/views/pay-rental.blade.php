@@ -26,7 +26,7 @@
                             @csrf
 
                             <div class="row">
-                                    <input type="hidden" name="user_id" value="{{ $tenant ? $tenant->id : '' }}">
+                                <input type="hidden" name="user_id" value="{{ $tenant ? $tenant->id : '' }}">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="label" for="name">Full Name</label>
@@ -231,7 +231,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 @endsection

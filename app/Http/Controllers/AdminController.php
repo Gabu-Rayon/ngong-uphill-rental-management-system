@@ -86,6 +86,33 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Maintenance request deleted successfully.');
     }
 
+    public function editHouse($id)
+    {
+        $house = Houses::findOrFail($id);
+        $categories = Categories::all();
+        
+        return view("admin-panel.edit-house", compact('house', 'categories'));
+    }
+    public function updateHouse(Request $request)
+    {
+        $request->validate([
+            'house_no' => 'required',
+            'category_id' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+        ]);
+        $house = Houses::findOrFail($request->id);
+
+        $house->update([
+            'house_no' => $request->house_no,
+            'category_id' => $request->category_id,
+            'description' => $request->description,
+            'price' => $request->price,
+        ]);
+
+        return redirect()->intended('admin/index')->with('success', 'House updated successfully.');
+    }
+
     public function adminLogout()
     {
         Auth::guard('web')->logout(); 

@@ -159,9 +159,9 @@
                                                     <td>{{ $maintenanceRequest->subject }}</td>
                                                     <td>
                                                         @if ($maintenanceRequest->status == 0)
-                                                            Pending
+                                                            <span class="badge badge-danger">Pending</span>
                                                         @else
-                                                            Approved
+                                                            <span class="badge badge-success">Approved</span>
                                                         @endif
                                                     </td>
                                                 </tr>
