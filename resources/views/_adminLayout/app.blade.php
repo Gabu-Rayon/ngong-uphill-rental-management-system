@@ -88,7 +88,7 @@
                 <div class="col-md-6 col-lg-3 mb-md-0 mb-4">
                     <h2 class="footer-heading"><a href="#" class="logo">Ngong Uphill's Rentals </a></h2>
                     <p>We are the most trusted name in real estate. We offer exceptional tenant services, well-maintained estates, and a variety of rentals, including single-story homes. Learn more and find your perfect rental today!</p>
-                    <a href="about">Read more <span class="fa fa-chevron-right" style="font-size: 11px;"></span></a>
+                    <a href="/about">Read more <span class="fa fa-chevron-right" style="font-size: 11px;"></span></a>
                 </div>
                 <div class="col-md-6 col-lg-3 mb-md-0 mb-4">
                     <h2 class="footer-heading">Services</h2>
