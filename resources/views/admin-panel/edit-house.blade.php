@@ -4,7 +4,7 @@
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="bg-primary text-white p-3">
         <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-dark">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/admin/index') }}" class="text-dark">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ url('/edit-house') }}" class="text-dark">Edit House</a></li>
             <li class="breadcrumb-item active" aria-current="page">Update House</li>
         </ol>

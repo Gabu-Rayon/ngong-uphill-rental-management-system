@@ -118,4 +118,15 @@ class AdminController extends Controller
         Auth::guard('web')->logout(); 
         return redirect('admin/admin-login'); 
     }
+
+    public function addHouse(){
+
+        $categories = Categories::all();
+        return view("admin-panel.add-house", compact('categories'));
+    }
+
+    public function createHouse(){
+        
+
+    }
 }

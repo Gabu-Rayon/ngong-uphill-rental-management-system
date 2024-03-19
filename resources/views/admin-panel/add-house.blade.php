@@ -4,7 +4,7 @@
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="bg-primary text-white p-3">
         <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-dark">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/admin/index') }}" class="text-dark">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ url('/add-house') }}" class="text-dark">Add House</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add House</li>
         </ol>
@@ -22,13 +22,13 @@
 
                             <div class="row">
                                 <input type="hidden" class="form-control" name="house_no" id="house_no"
-                                    placeholder="House No e.g. 23450" value="{{ $house->house_no }}" required>
+                                    placeholder="House No e.g. 23450" value="{" required>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="label" for="name">House No</label>
                                         <input type="text" class="form-control" name="house_no" id="house_no"
-                                            placeholder="House No e.g. 23450" value="{{ $house->house_no }}">
+                                            placeholder="House No e.g. 23450" value="">
                                         @error('house_no')
                                             <p class="text-danger mt-1">{{ $message }}</p>
                                         @enderror
@@ -40,8 +40,7 @@
                                         <select class="form-control" name="category_id" id="category_id">
                                             <option value="">Select Category</option> <!-- Default option -->
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}"
-                                                    {{ $house->category_id == $category->id ? 'selected' : '' }}>
+                                                <option value="{{ $category->id }}">
                                                     {{ $category->name }}
                                                 </option>
                                             @endforeach
@@ -56,7 +55,7 @@
                                     <div class="form-group">
                                         <label class="label" for="house_no">Description</label>
                                         <input type="text" class="form-control" name="description" id="description"
-                                            placeholder="description" value="{{ $house->description }}">
+                                            placeholder="description" value="">
                                         @error('house_no')
                                             <p class="text-danger mt-1">{{ $message }}</p>
                                         @enderror
@@ -66,7 +65,7 @@
                                     <div class="form-group">
                                         <label class="label" for="category">Letting Price ./Monthly</label>
                                         <input type="text" class="form-control" name="price" id="price"
-                                            placeholder="Letting Price ./monthly" value="{{ $house->price }}">
+                                            placeholder="Letting Price ./monthly" value="">
                                         @error('price')
                                             <p class="text-danger mt-1">{{ $message }}</p>
                                         @enderror
@@ -74,7 +73,7 @@
                                 </div>
                                 <div class="">
                                     <div class="form-group">
-                                        <input type="submit" value="Update House" class="btn btn-primary">
+                                        <input type="submit" value="Add House" class="btn btn-primary">
                                         <div class="submitting"></div>
                                     </div>
                                 </div>

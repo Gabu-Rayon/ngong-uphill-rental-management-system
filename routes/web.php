@@ -61,7 +61,8 @@ Route::post('/payment/update', [AdminController::class, 'updatePayment'])->name(
 Route::get('/admin/edit-house/{id}', [AdminController::class, 'editHouse'])->name('edit.house');
 Route::post('/admin/delete-house', [AdminController::class, 'deleteHouse'])->name('delete.house');
 Route::post('/admin/update-house', [AdminController::class, 'updateHouse'])->name('update.house');
-Route::post('/admin/add-house', [AdminController::class, 'addHouse'])->name('add.house');
+Route::get('/admin/add-house', [AdminController::class, 'addHouse'])->name('add.house');
+Route::post('/admin/create-house', [AdminController::class, 'createHouse'])->name('create.house');
 
 Route::get('/admin/edit-category', [AdminController::class, 'editCategory'])->name('category.edit');
 Route::post('/admin/delete-category', [AdminController::class, 'deleteCategory'])->name('category.delete');
