@@ -187,8 +187,7 @@
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="fa fa-quote-left"></i>
                                     </span>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts.</p>
+                                    <p>I have been a tenants for Ngong Uphill's over a decade and I can complain  the management is workinf doing there work as expected deleivery is on time and give them a 5 stars </p>
                                     <p class="name">Racky Henderson</p>
                                     <span class="position">Father</span>
                                 </div>
@@ -203,8 +202,7 @@
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="fa fa-quote-left"></i>
                                     </span>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts.</p>
+                                    <p>I have been a tenants for Ngong Uphill's over a decade and I can complain  the management is workinf doing there work as expected deleivery is on time and give them a 5 stars </p>
                                     <p class="name">Henry Dee</p>
                                     <span class="position">Businesswoman</span>
                                 </div>
@@ -213,14 +211,13 @@
                         <div class="item">
                             <div class="testimony-wrap d-flex">
                                 <div class="user-img"
-                                    style="background-image: uurl('{{ asset('assets/images/person_3.jpg') }}');">
+                                    style="background-image: url('{{ asset('assets/images/person_3.jpg') }}');">
                                 </div>
                                 <div class="text pl-4">
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="fa fa-quote-left"></i>
                                     </span>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts.</p>
+                                    <p>I have been a tenants for Ngong Uphill's over a decade and I can complain  the management is workinf doing there work as expected deleivery is on time and give them a 5 stars </p>
                                     <p class="name">Mark Huff</p>
                                     <span class="position">Businesswoman</span>
                                 </div>
@@ -235,8 +232,7 @@
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="fa fa-quote-left"></i>
                                     </span>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts.</p>
+                                    <p>I have been a tenants for Ngong Uphill's over a decade and I can complain  the management is workinf doing there work as expected deleivery is on time and give them a 5 stars </p>
                                     <p class="name">Rodel Golez</p>
                                     <span class="position">Businesswoman</span>
                                 </div>
@@ -251,8 +247,7 @@
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="fa fa-quote-left"></i>
                                     </span>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts.</p>
+                                    <p>I have been a tenants for Ngong Uphill's over a decade and I can complain  the management is workinf doing there work as expected deleivery is on time and give them a 5 stars </p>
                                     <p class="name">Ken Bosh</p>
                                     <span class="position">Businesswoman</span>
                                 </div>
@@ -270,12 +265,10 @@
                 <div class="col-md-6 wrap-about">
                     <div class="img img-2 mb-4" style="background-image: url('{{ asset('assets/images/about.jpg') }}');">
                     </div>
-                    <h2>The most recommended vacation rental</h2>
+                    <h2>The most recommended Rental's in Ngong</h2>
                     <p>We are the most trusted name in real estate. We offer exceptional tenant services, well-maintained
                         estates, and a variety of rentals, including single-story homes. Learn more and find your perfect
-                        rental today! Even the all-powerful Pointing has no control about the blind texts it is an almost
-                        unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to
-                        leave for the far World of Grammar.</p>
+                        rental today!</p>
                 </div>
                 <div class="col-md-6 wrap-about ftco-animate">
                     <div class="heading-section">
