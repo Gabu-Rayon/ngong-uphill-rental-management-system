@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="hero-wrap js-fullheight" style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}');"
+    <div class="hero-wrap js-fullheight" style="background-image: url('{{ asset('assets/images/Rentals-homepage.jpg') }}');"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">

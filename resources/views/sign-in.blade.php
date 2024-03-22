@@ -13,7 +13,7 @@
             }
         });
     </script>
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}');"
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('assets/images/Rental-Sign-up.jpg') }}');"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
