@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 10, 2024 at 04:32 PM
+-- Generation Time: Mar 22, 2024 at 01:45 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Duplex', NULL, NULL),
+(1, 'Duplex', NULL, '2024-03-21 20:04:33'),
 (2, 'Single-Family Home', NULL, NULL),
 (3, 'Multi-Family Home', NULL, NULL),
 (4, '2-story house', NULL, NULL);
@@ -83,7 +83,9 @@ CREATE TABLE `houses` (
 INSERT INTO `houses` (`id`, `house_no`, `category_id`, `description`, `price`, `created_at`, `updated_at`) VALUES
 (1, '623', 4, 'Sample', 25000, NULL, NULL),
 (2, '624', 1, 'Accomadate more than we ...', 55000, NULL, NULL),
-(3, '625', 2, 'when you can always call home', 45000, NULL, NULL);
+(3, '625', 2, 'when you can always call home', 45000, NULL, NULL),
+(4, '625999', 1, 'when you can always call home always', 28000, '2024-03-21 19:12:19', '2024-03-21 19:12:19'),
+(5, '625999', 1, 'when you can always call home always everyday', 28999000, '2024-03-21 19:12:48', '2024-03-21 19:34:32');
 
 -- --------------------------------------------------------
 
@@ -93,10 +95,20 @@ INSERT INTO `houses` (`id`, `house_no`, `category_id`, `description`, `price`, `
 
 CREATE TABLE `maintenance_requests` (
   `id` int(11) NOT NULL,
-  `maintenance_ticket_id` varchar(255) NOT NULL,
   `tenant_id` bigint(20) NOT NULL,
-  `request` varchar(100) NOT NULL
+  `subject` varchar(255) NOT NULL,
+  `request` varchar(100) NOT NULL,
+  `status` tinyint(1) DEFAULT 0,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `maintenance_requests`
+--
+
+INSERT INTO `maintenance_requests` (`id`, `tenant_id`, `subject`, `request`, `status`, `created_at`, `updated_at`) VALUES
+(6, 3, 'Broken Sink', 'I  have a broken sink that need to be fixed', 0, '2024-03-15 17:52:29', '2024-03-22 00:12:24');
 
 -- --------------------------------------------------------
 
@@ -243,7 +255,7 @@ CREATE TABLE `tenants` (
 
 INSERT INTO `tenants` (`id`, `name`, `username`, `email`, `contact`, `town`, `password`, `house_id`, `status`, `date_in`, `created_at`, `updated_at`) VALUES
 (2, 'John', 'C', '', 'Smith', 'jsmith@sample.com', '+18456-5455-55', 1, 1, '2020-07-02', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'Gibson Murimi Muriuki', 'Gibson', 'gibsonmurimi4@gmail.com', '789898988', 'Nairobi', '$2y$12$Dqt4xhz7MHC6gx8VuLBRbeK3BXXDnzluwTwvtwC.k5gxbGZ3RI3AO', 1, 1, NULL, '2024-03-09 11:33:56', '2024-03-09 11:33:56'),
+(3, 'Gibson Murimi Muriuki', 'Gibson', 'gibsonmurimi4@gmail.com', '789898988', 'Nairobi', '$2y$12$Dqt4xhz7MHC6gx8VuLBRbeK3BXXDnzluwTwvtwC.k5gxbGZ3RI3AO', 2, 1, NULL, '2024-03-09 11:33:56', '2024-03-14 09:03:33'),
 (4, 'Gibson Murimi', 'agentGibsons254', 'gibso4@gmail.com', '0712345678', 'Nairobi', '$2y$12$UBTb3VpAT82dzp2.pWWsIesXB93FyUv871g2K3RrPtFWkY.Bsfn.e', 1, 1, NULL, '2024-03-09 13:19:31', '2024-03-09 13:19:31'),
 (5, 'Jay', 'Jay', 'jay4@gmail.com', '0765432197', 'Nairobi', '$2y$12$A/qmARX98TGR8wXgjE1OU.n2qtw9PgPKSaLT.kDiy/8ZLRlQTt5Bq', 2, 1, NULL, '2024-03-10 11:20:28', '2024-03-10 12:12:33');
 
@@ -268,7 +280,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `type`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'admin', '$2y$12$WNtRU6hoiM44afhgnzswROhNY5uvn5g.ljz5jn4XZShFCNi0a6fH2', 1, NULL, NULL);
+(1, 'Administrator', 'admin', '$2y$12$A/qmARX98TGR8wXgjE1OU.n2qtw9PgPKSaLT.kDiy/8ZLRlQTt5Bq', 1, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -354,7 +366,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -366,13 +378,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `houses`
 --
 ALTER TABLE `houses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `maintenance_requests`
 --
 ALTER TABLE `maintenance_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
