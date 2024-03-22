@@ -16,7 +16,7 @@
                     <div class="contact-wrap w-100 p-md-5 p-4">
                         <h3 class="mb-4">Add Category</h3>
                         <div id="form-message-warning" class="mb-4"></div>
-                        <form method="POST" action="{{ route('create.category') }}" id="contactForm" name="contactForm"
+                        <form method="POST" action="{{ route('update.category') }}" id="contactForm" name="contactForm"
                             class="contactForm">
 
                             @csrf
@@ -26,7 +26,7 @@
                                     <div class="form-group">
                                         <label class="label" for="name">Category Name</label>
                                         <input type="text" class="form-control" name="category" id="category"
-                                            placeholder="House No e.g. Duplex,storey,bedsitter e.t.c" value="">
+                                            placeholder="House No e.g. Duplex,storey,bedsitter e.t.c" value="{{ $category->name}}">
                                         @error('category')
                                             <p class="text-danger mt-1">{{ $message }}</p>
                                         @enderror
@@ -34,10 +34,12 @@
                                 </div>
 
                                 <div class="col-md-6">
+                                     <input type="hidden" name="id" value="{{ $category->id }}">
+                                
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="submit" value="Add House" class="btn btn-primary">
+                                        <input type="submit" value="UpdateHouse" class="btn btn-primary">
                                         <div class="submitting"></div>
                                     </div>
                                 </div>

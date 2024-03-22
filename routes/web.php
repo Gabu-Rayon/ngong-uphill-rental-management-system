@@ -54,19 +54,26 @@ Route::get('/tenant/edit', [AdminController::class, 'editTenant'])->name('tenant
 Route::post('/tenant/update', [AdminController::class, 'udateTenant'])->name('tenant.update');
 Route::post('/tenant/delete', [AdminController::class, 'deleteTenant'])->name('tenant.delete');
 
-Route::get('/payment/edit', [AdminController::class, 'editPayment'])->name('payment.edit');
-Route::post('/payment/delete', [AdminController::class, 'deletePayment'])->name('payment.delete');
-Route::post('/payment/update', [AdminController::class, 'updatePayment'])->name('payment.update');
+///Routes for Payments
+Route::post('/admin/payment/delete/{id}', [AdminController::class, 'deletePayment'])->name('delete.payment');
+Route::get('/admin/payment/print/{id}', [AdminController::class, 'printPayment'])->name('print.payment');
 
+///Routes for Houses
 Route::get('/admin/edit-house/{id}', [AdminController::class, 'editHouse'])->name('edit.house');
-Route::post('/admin/delete-house', [AdminController::class, 'deleteHouse'])->name('delete.house');
 Route::post('/admin/update-house', [AdminController::class, 'updateHouse'])->name('update.house');
+// Route::post('/admin/delete-house/{id}', [AdminController::class, 'deleteHouse'])->name('delete.house');
+Route::match(['get', 'post'], '/admin/delete-house/{id}', [AdminController::class, 'deleteHouse'])->name('delete.house');
 Route::get('/admin/add-house', [AdminController::class, 'addHouse'])->name('add.house');
 Route::post('/admin/create-house', [AdminController::class, 'createHouse'])->name('create.house');
 
-Route::get('/admin/edit-category', [AdminController::class, 'editCategory'])->name('category.edit');
-Route::post('/admin/delete-category', [AdminController::class, 'deleteCategory'])->name('category.delete');
-Route::post('/admin/update-category', [AdminController::class, 'updateCategory'])->name('category.update');
+///Routes for Category
+Route::get('/admin/edit-category/{id}', [AdminController::class, 'editCategory'])->name('edit.category');
+Route::post('/admin/update-category', [AdminController::class, 'updateCategory'])->name('update.category');
+// Route::delete('/admin/delete-category/{id}', [AdminController::class, 'deleteCategory'])->name('delete.category');
+Route::match(['get', 'post','delete'], '/admin/delete-category/{id}', [AdminController::class, 'deleteCategory'])->name('delete.category');
+Route::get('/admin/add-category', [AdminController::class, 'addCategory'])->name('add.category');
+Route::post('/admin/create-category', [AdminController::class, 'createCategory'])->name('create.category');
 
+///Routes for maintainance
 Route::post('/maintainance/toggle-status/{id}', [AdminController::class, 'toggleStatus'])->name('admin.maintainance.toggleStatus');
 Route::match(['get', 'post'], '/maintainance/delete/{id}', [AdminController::class, 'maintainanceDelete'])->name('maintainance.delete');

@@ -238,6 +238,29 @@
                 }
             });
         }
+        function confirmDelete(houseNo, houseId) {
+            if (confirm("Are you sure you want to delete house number " + houseNo + "?")) {
+                // If user confirms, redirect to the delete route
+                window.location.href = "{{ url('/admin/delete-house') }}/" + houseId;
+            }
+        }
+
+
+
+          $(document).ready(function () {
+        var categoryIdToDelete;
+
+        $('.delete-category-btn').click(function () {
+            categoryIdToDelete = $(this).data('category-id');
+            $('#confirmationModal').modal('show');
+        });
+
+        $('#confirmDelete').click(function () {
+            // Perform deletion via AJAX or redirect to delete route
+            // Example: Redirect to delete route using window.location.href
+            window.location.href = "{{ url('/admin/delete-category') }}/" + categoryIdToDelete;
+        });
+    });
     </script>
 </body>
 

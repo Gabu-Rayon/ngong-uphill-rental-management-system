@@ -2,6 +2,11 @@
 
 @section('content')
     <div id="userContentContainer">
+        @if (session('success'))
+            <script>
+                alert("{{ session('success') }}");
+            </script>
+        @endif
         <nav id="userSideBar">
             <div class="image">
                 <div class="text-center mt-3">
@@ -91,13 +96,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
-                                   
-                                    <h4>HOUSES</h4> 
-                                     <div class="col-md-4"><a href="{{ route('add.house') }}" class="btn btn-success">Add House</a></div>                                    
-                                    <br>
-                                    <table class="table">                                       
+
+                                    <h4>HOUSES</h4>
+                                    <div class="col-md-4"><a href="{{ route('add.house') }}" class="btn btn-success">Add
+                                            House</a>
+                                    </div>
+                                    <br><br>
+                                    <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -119,10 +126,12 @@
                                                     <td>
                                                         <a href="{{ route('edit.house', $house->id) }}"
                                                             class="btn btn-primary">Edit</a>
-                                                        <br>
-                                                        <a href="{{ route('delete.house', $house->id) }}"
-                                                            class="btn btn-danger">Delete</a>
+                                                        <br><br>
+                                                        <button
+                                                            onclick="confirmDelete('{{ $house->house_no }}', {{ $house->id }})"
+                                                            class="btn btn-danger">Delete</button>
                                                     </td>
+
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -130,6 +139,12 @@
                                 </div>
                                 <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
                                     <h4>Houses Categories</h4>
+                                    <div class="col-md-4">
+                                        <a href="{{ route('add.category') }}" class="btn btn-success">Add
+                                            Category
+                                        </a>
+                                    </div>
+                                    <br><br>
                                     <table class="table">
                                         <thead>
                                             <tr>
@@ -144,11 +159,11 @@
                                                     <td>{{ $category->id }}</td>
                                                     <td>{{ $category->name }}</td>
                                                     <td>
-                                                        <a href="{{ route('category.edit', $category->id) }}"
+                                                        <a href="{{ route('edit.category', $category->id) }}"
                                                             class="btn btn-primary">Edit</a>
-                                                        <br>
-                                                        <a href="{{ route('category.delete', $category->id) }}"
-                                                            class="btn btn-danger">Delete</a>
+                                                        <br><br>
+                                                        <button class="btn btn-danger delete-category-btn"
+                                                            data-category-id="{{ $category->id }}">Delete</button>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -179,7 +194,7 @@
                                                     <td>
                                                         <a href="{{ route('tenant.edit', $tenant->id) }}"
                                                             class="btn btn-primary">Edit</a>
-                                                        <br>
+                                                        <br><br>
                                                         <a href="{{ route('tenant.delete', $tenant->id) }}"
                                                             class="btn btn-danger">Delete</a>
                                                     </td>
@@ -207,18 +222,30 @@
                                                     <td>{{ $payment->id }}</td>
                                                     <td>{{ $payment->name }}</td>
                                                     <td>{{ $payment->house_no }}</td>
-                                                    <td>{{ $payment->amount }}</td>
-                                                    <td>{{ $payment->amount }}</td>
+                                                    <td> Ksh {{ $payment->amount }}</td>
+                                                    <td>{{ $payment->created_at }}</td>
                                                     <td>
-                                                        <a href="{{ route('payment.edit', $payment->id) }}"
-                                                            class="btn btn-primary">Edit</a>
-                                                        <br>
-                                                        <a href="{{ route('payment.delete', $payment->id) }}"
+                                                        <br><br>
+                                                        <a href="{{ route('delete.payment', $payment->id) }}"
                                                             class="btn btn-danger">Delete</a>
+                                                        <br><br>
+                                                        <a href="{{ route('print.payment', $payment->id) }}"
+                                                            class="btn btn-danger">Print</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3"><strong>Total per Month:</strong></td>
+                                                <td colspan="4">Ksh {{ $totalPerMonth }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"><strong>Total per Year:</strong></td>
+                                                <td colspan="4">Ksh {{ $totalPerYear }}</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                     </table>
                                 </div>
                                 <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
@@ -268,6 +295,28 @@
                         </div>
                     </div>
                 </div>
+                <!-- Confirmation Modal -->
+                <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                    aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this category?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-danger" id="confirmDelete">Yes, Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </section>
         </div>
     </div>

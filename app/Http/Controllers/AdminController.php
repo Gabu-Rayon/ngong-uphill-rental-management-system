@@ -7,6 +7,8 @@ use App\Models\Houses;
 use App\Models\Tenants;
 use App\Models\Payments;
 use App\Models\Categories;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use App\Models\MaintenanceRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +25,19 @@ class AdminController extends Controller
         $paymentCount = Payments::count();
         $maintainanceCount = MaintenanceRequest::count();
 
+
+        // Calculate total amount per month
+        $totalPerMonth = DB::table('payments')
+        ->select(DB::raw('SUM(amount) as total_per_month'))
+        ->whereMonth('created_at', '=', date('m'))
+        ->value('total_per_month');
+
+        // Calculate total amount per year
+        $totalPerYear = DB::table('payments')
+        ->select(DB::raw('SUM(amount) as total_per_year'))
+        ->whereYear('created_at', '=', date('Y'))
+        ->value('total_per_year');
+
         // Fetch data for tables
         $houses = Houses::all(); 
         $tenants = Tenants::all(); 
@@ -30,7 +45,7 @@ class AdminController extends Controller
         $payments = Payments::all();
         $maintainances = MaintenanceRequest::all();
 
-        return view("admin-panel.index", compact('user', 'categoryCount', 'houseCount', 'tenantCount', 'paymentCount', 'houses', 'tenants','categories','payments', 'maintainances', 'maintainanceCount'));
+        return view("admin-panel.index", compact('user', 'categoryCount', 'houseCount', 'tenantCount', 'paymentCount', 'houses', 'tenants','categories','payments', 'maintainances','maintainanceCount', 'totalPerMonth', 'totalPerYear'));
     }
     public function adminLogin()
     {
@@ -95,22 +110,27 @@ class AdminController extends Controller
     }
     public function updateHouse(Request $request)
     {
+        // Validate the incoming request data
         $request->validate([
-            'house_no' => 'required',
-            'category_id' => 'required',
-            'description' => 'required',
-            'price' => 'required',
+            'house_no' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
         ]);
-        $house = Houses::findOrFail($request->id);
 
+        // Find the house by ID
+        $house = Houses::findOrFail($request->input('house_id'));
+
+        // Update the house with the new data
         $house->update([
-            'house_no' => $request->house_no,
-            'category_id' => $request->category_id,
-            'description' => $request->description,
-            'price' => $request->price,
+            'house_no' => $request->input('house_no'),
+            'category_id' => $request->input('category_id'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
         ]);
 
-        return redirect()->intended('admin/index')->with('success', 'House updated successfully.');
+        // Redirect back with a success message
+        return redirect()->intended('admin/index')->with('success', 'House updated successfully!');
     }
 
     public function adminLogout()
@@ -125,8 +145,105 @@ class AdminController extends Controller
         return view("admin-panel.add-house", compact('categories'));
     }
 
-    public function createHouse(){
-        
+    public function createHouse(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'house_no' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+        ]);
 
+        // Create a new house instance
+        $house = new Houses([
+            'house_no' => $request->input('house_no'),
+            'category_id' => $request->input('category_id'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+        ]);
+
+        // Save the house
+        $house->save();
+
+        // Redirect to a success page or wherever you wish
+        return redirect()->intended('admin/index')->with('success', 'House added successfully!');
     }
+    public function deleteHouse($id)
+    {
+        // Find the house by ID
+        $house = Houses::find($id);
+
+        if (!$house) {
+            // If house not found, redirect back with an error message
+            return redirect()->back()->with('error', 'House not found!');
+        }
+
+        // Delete the house
+        $house->delete();
+
+        // Redirect back with a success message
+        return redirect()->intended('admin/index')->with('success', 'House deleted successfully!');
+    }
+
+    public function addCategory(){
+        return view('admin-panel.add-category');
+    }
+
+    public function createCategory(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'category' => 'required|string|unique:categories,name',
+        ]);
+
+        $category = Categories::create([
+            'name' => $request->input('category'),
+        ]);
+        return redirect()->intended('admin/index')->with('success', 'Category added successfully!');
+    }
+
+    public function editCategory($id){
+        $category=Categories::findOrFail($id);
+        return view("admin-panel.edit-category", compact('category'));
+    }
+
+
+    public function updateCategory(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'id' => 'required|exists:categories,id',
+            'category' => 'required|string|unique:categories,name,' . $request->id,
+        ]);
+
+        $category = Categories::findOrFail($request->id);
+
+        $category->update([
+            'name' => $request->input('category'),
+        ]);
+
+        return redirect()->intended('admin/index')->with('success', 'Category updated successfully!');
+    }
+
+
+    public function deleteCategory($id)
+    {
+        $category = Categories::findOrFail($id);
+
+        $category->delete();
+
+        return redirect()->back()->with('success', 'Category deleted successfully!');
+    }
+
+
+
+    public function printPayment($id)
+    {
+        // Find the payment by ID
+        $payment = Payments::findOrFail($id);
+        $registrationNumber = Str::uuid();
+        return view("admin-panel.receipt-for-rent", compact('payment', 'registrationNumber'));
+    }
+    
 }

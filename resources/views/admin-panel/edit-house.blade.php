@@ -18,12 +18,12 @@
                         <div id="form-message-warning" class="mb-4"></div>
                         <form method="POST" action="{{ route('update.house') }}" id="contactForm" name="contactForm"
                             class="contactForm">
+
                             @csrf
 
+                            
                             <div class="row">
-                                <input type="hidden" class="form-control" name="house_no" id="house_no"
-                                    placeholder="House No e.g. 23450" value="{{ $house->house_no }}" required>
-
+                                <input type="hidden" name="house_id" value="{{ $house->id }}">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="label" for="name">House No</label>
